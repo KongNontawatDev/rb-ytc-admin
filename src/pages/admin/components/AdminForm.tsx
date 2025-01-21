@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button, Flex, Form, Input, Spin, Typography } from "antd";
 import { useTranslation } from "react-i18next";
-import { useAdminById } from "../hooks/useAdminQuery";
+import { getImage, useAdminById } from "../hooks/useAdminQuery";
 import { Admin } from "../types";
 import { useCreateAdmin, useUpdateAdmin } from "../hooks/useAdminMutate";
 import { FormMode } from "../../../types/formType";
@@ -63,6 +63,7 @@ export default function AdminForm({
 			form.resetFields();
 		} else if (data?.data && (mode === "edit" || mode === "view")) {
 			form.setFieldsValue(data?.data);
+			form.setFieldValue("image",getImage(data?.data?.image,"admin"))
 		}
 	}, [form, mode, data]);
 
@@ -170,7 +171,7 @@ export default function AdminForm({
 			}),
 		},
 		{
-			pattern: /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#_$%^&*])(?=.{8,})/,
+			pattern: /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#_$%^&.*])(?=.{8,})/,
 			message: t("validation:password.pattern"),
 		},
 	];

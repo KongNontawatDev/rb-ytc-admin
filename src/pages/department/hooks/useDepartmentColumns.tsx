@@ -44,6 +44,7 @@ export const useDepartmentColumns = ({
 				title: t("department:schema.id.label"),
 				key: "id",
 				lock: true,
+				width:90,
 				render: (_, record) => (
 					<Typography.Link onClick={() => onView(record.id)}>
 						{record.id}

@@ -25,7 +25,7 @@ export default function RoomPage() {
 	const [openView, setViewOpen] = useState(false);
 	const defaultFilter: FilterQuery = {
 		textSearch: "",
-		searchField: "id,full_name",
+		searchField: "id,name",
 		page: 1,
 		pageSize: 10,
 		sortOrder: "desc",

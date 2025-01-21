@@ -12,7 +12,7 @@ import { BookingList } from "../types";
 import { UnorderedListOutlined } from "@ant-design/icons";
 import ButtonCancel from "../../../components/common/ButtonCancel";
 import { toDateTime } from "../../../utils/dateFunction";
-import BadgeActive from "../../../components/common/BadgeActive";
+import BadgeStatus from "./BadgeStatus";
 
 interface BookingListViewModalProps {
 	id?: number | null;
@@ -83,7 +83,7 @@ export default function BookingListViewModal({
 		{
 			key: t("booking_list:schema.status.label"),
 			label: t("booking_list:schema.status.label"),
-			children: <BadgeActive value={String(booking_list?.status)} />,
+			children: <BadgeStatus value={String(booking_list?.status)} />,
 			span: 3,
 		},
 		{

@@ -106,7 +106,7 @@ export default function UserViewModal({
 				</center>
 					<Descriptions size="small" bordered items={items} className="my-5" />
 					<Typography.Title level={5}>รายการจองใน 1 เดือนนี้</Typography.Title>
-					<Timeline
+					{user?.booking_list.length!=0?<Timeline
 						className="mb-5 mt-4"
 						items={
 							user?.booking_list.map(list=>(
@@ -121,7 +121,7 @@ export default function UserViewModal({
 							}
 							))
 						}
-					/>
+					/>:<EmptyData/>}
 				</>
 			)}
 

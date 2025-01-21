@@ -45,6 +45,7 @@ export const useColumns = ({
 			{
 				title: t("accessory:schema.id.label"),
 				key: "id",
+				width:90,
 				lock: true,
 				render: (_, record) => (
 					<Typography.Link onClick={() => onView(record.id)}>
@@ -76,7 +77,6 @@ export const useColumns = ({
 			{
 				title: t("accessory:schema.detail.label"),
 				key: "detail",
-				lock: true,
 				render: (_, record) => (
 					<Typography.Paragraph type="secondary" ellipsis={{ rows: 2, expandable: true, symbol: t("common:more") }}>
 						{record.detail}

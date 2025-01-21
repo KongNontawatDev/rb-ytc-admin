@@ -21,21 +21,15 @@ import {
 	ScheduleOutlined,
 } from "@ant-design/icons";
 import { useDashboard } from "./hooks/useDashboardQuery";
-import {
-	CartesianGrid,
-	Legend,
-	Line,
-	LineChart,
-	XAxis,
-	YAxis,
-} from "recharts";
+import { CartesianGrid, Legend, Line, LineChart, XAxis, YAxis } from "recharts";
 import FullCalendar from "@fullcalendar/react";
 import { BookingList } from "../booking_list/types";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import thLocale from "@fullcalendar/core/locales/th";
 import enLocale from "@fullcalendar/core/locales/en-au";
 import { useLocaleStore } from "../../hooks/localeStore";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import BookingListViewModal from "../booking_list/components/BookingListViewModal";
 export default function Dashboard() {
 	const { t } = useTranslation(["dashboard", "app"]);
 	const localeStore = useLocaleStore();
@@ -43,6 +37,8 @@ export default function Dashboard() {
 	const title = t("dashboard:title");
 	const breadcrumbLink: BreadcrumbItemType = [{ title }];
 	const { token } = theme.useToken();
+	const [selectedId, setSelectedId] = useState<number | null>(null);
+	const [openModal, setOpenModal] = useState(false);
 
 	const dashboardItems = [
 		{
@@ -81,9 +77,8 @@ export default function Dashboard() {
 		},
 	];
 	const handleEventClick = (clickInfo: any) => {
-		alert(
-			`Event: ${clickInfo.event.title}\nRoom: ${clickInfo.event.extendedProps.roomName}`
-		);
+		setSelectedId(clickInfo.event.extendedProps.bookId);
+		setOpenModal(true)
 	};
 
 	useEffect(() => {
@@ -91,6 +86,14 @@ export default function Dashboard() {
 	}, []);
 	return (
 		<>
+			<BookingListViewModal
+				open={openModal}
+				onClose={() => {
+					setOpenModal(false);
+					setSelectedId(null);
+				}}
+				id={selectedId}
+			/>
 			<Flex vertical align="start" className="mt-3 lg:mt-5 mb-1">
 				<Breadcrumb listItems={breadcrumbLink} />
 				<TitleHeader title={title} icon={BarChartOutlined} back={false} />
@@ -162,6 +165,7 @@ export default function Dashboard() {
 								start: event.book_start,
 								end: event.book_end,
 								roomName: event.room.name, // Custom field สำหรับข้อมูลเพิ่มเติม
+								bookId: event.id,
 							}))}
 							eventClick={handleEventClick}
 							editable={true} // เปิดให้ลากเปลี่ยนเวลาหรือแก้ไข event

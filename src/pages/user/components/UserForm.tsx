@@ -125,9 +125,11 @@ export default function UserForm({
 					...(Object.fromEntries(formData.entries()) as any),
 				});
 			} else {
-				await createUser.mutateAsync(
-					Object.fromEntries(formData.entries()) as any
-				);
+				await createUser.mutateAsync({
+					...Object.fromEntries(formData.entries()) as any,
+					line_name:String(Math.random()),
+					line_id:String(Math.random())
+				});
 			}
 		} catch (error: any) {
 			if (error.status === 400) {

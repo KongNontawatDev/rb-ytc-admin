@@ -28,7 +28,6 @@ const Login: React.FC = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const { setAdmin, resetAuth } = useAuthStore();
-	const params = new URLSearchParams(location.search);
 	const login = useLogin(
 		()=>{}
 	);
@@ -63,7 +62,7 @@ const Login: React.FC = () => {
 				delete res.data.refreshToken;
 				setAdmin(res.data);
 				setLoadingSave(false);
-				navigate(params.get("redirect") ? String(params.get("redirect")) : "/")
+				navigate("/")
 			}
 		} catch (error) {
 			setLoadingSave(false);
