@@ -1,0 +1,25 @@
+{
+	"title": "Login",
+	"mustLogin": "You must be logged in..",
+	"loginSuccess": "Login successful.",
+	"loginError": "Login failed",
+	"loginWarning": "Username or password is incorrect! Please try again.",
+	"rememberMe": "Remember me",
+	"forgetPassword": "Forgot password?",
+	"schema": {
+		"email": {
+			"label": "Email"
+		},
+		"password": {
+			"label": "Password",
+			"notmatch": "Password and confirm password do not match."
+		}
+	},
+	"changePassword": "Change Password",
+	"changePasswordRole": "You must enter the password and confirm the password exactly the same.",
+	"changePasswordSuccess": "Change Password Success",
+	"changePasswordFail": "Change Password Failed",
+	"currentPassword":"Current Password",
+	"newPassword":"New Password",
+	"confirmNewPassword":"Confirm New Password"
+}

@@ -1,0 +1,36 @@
+{
+	"header": "จัดการผู้ใช้",
+	"title": "ผู้ใช้",
+	"table": {
+		"title": "รายการผู้ใช้",
+		"filter": {
+			"searchPlaceholder": "ค้นหาด้วย รหัส หรือ ชื่อผู้ใช้"
+		}
+	},
+	"schema": {
+		"id": {
+			"label": "รหัส"
+		},
+		"department_id": {
+			"label": "รหัสแผนก"
+		},
+		"full_name": {
+			"label": "ชื่อ - สกุล"
+		},
+		"tel": {
+			"label": "เบอร์โทร"
+		},
+		"line_name": {
+			"label": "ชื่อไลน์"
+		},
+		"line_id": {
+			"label": "ไลน์ไอดี"
+		},
+		"image": {
+			"label": "รูปผู้ใช้"
+		},
+		"status": {
+			"label": "สถานะ"
+		}
+	}
+}

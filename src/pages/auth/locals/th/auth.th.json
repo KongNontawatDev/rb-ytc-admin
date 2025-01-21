@@ -1,0 +1,25 @@
+{
+	"title": "เข้าสู่ระบบ",
+	"mustLogin": "คุณต้องเข้าสู่ระบบก่อน",
+	"loginSuccess": "เข้าสู่ระบบสำเร็จ",
+	"loginError": "เข้าสู่ระบบไม่สำเร็จ",
+	"loginWarning": "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง! โปรดลองอีกครั้ง",
+	"rememberMe": "จดจำการเข้าสู่ระบบ",
+	"forgetPassword": "ลืมรหัสผ่าน?",
+	"schema": {
+		"email": {
+			"label": "อีเมล"
+		},
+		"password": {
+			"label": "รหัสผ่าน",
+			"notmatch": "รหัสผ่าน กับยืนยันรหัสผ่านไม่ตรงกัน"
+		}
+	},
+	"changePassword": "เปลี่ยนรหัสผ่าน",
+	"changePasswordRole": "ต้องกรอกรหัสผ่านและยืนยันรหัสผ่านให้ตรงกัน",
+	"changePasswordSuccess": "เปลี่ยนรหัสผ่าน สำเร็จ",
+	"changePasswordFail": "เปลี่ยนรหัสผ่าน ไม่เสร็จ",
+	"currentPassword": "รหัสผ่านปัจจุบัน",
+	"newPassword": "รหัสผ่านใหม่",
+	"confirmNewPassword": "ยืนยันรหัสผ่านใหม่อีกครั้ง"
+}

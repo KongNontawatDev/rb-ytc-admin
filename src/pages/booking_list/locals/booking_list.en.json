@@ -1,0 +1,42 @@
+{
+	"header": "BookingList Management",
+	"title": "BookingList",
+	"table": {
+		"title": "BookingList List",
+		"filter": {
+			"searchPlaceholder": "Search by BookingList ID or BookingList Name"
+		}
+	},
+	"schema": {
+		"id": {
+			"label": "ID"
+		},
+		"booking_number": {
+			"label": "Booking Number"
+		},
+		"tel": {
+			"label": "Booker/Responsible Person's Phone Number"
+		},
+		"user_name": {
+			"label": "Booker/Responsible Person's Name"
+		},
+		"title": {
+			"label": "Meeting Title"
+		},
+		"detail": {
+			"label": "Details/Notes"
+		},
+		"book_start": {
+			"label": "Start Time"
+		},
+		"book_end": {
+			"label": "End Time"
+		},
+		"status": {
+			"label": "Status"
+		},
+		"department": {
+			"label": "Requesting Department"
+		}
+	}
+}

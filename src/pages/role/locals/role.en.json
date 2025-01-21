@@ -1,0 +1,18 @@
+{
+	"header": "Role Management",
+	"title": "Role",
+	"table": {
+		"title": "Role List",
+		"filter": {
+			"searchPlaceholder": "Search by Role ID or Role Name"
+		}
+	},
+	"schema": {
+		"id": {
+			"label": "ID"
+		},
+		"name": {
+			"label": "User Name"
+		}
+	}
+}

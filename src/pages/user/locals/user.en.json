@@ -1,0 +1,36 @@
+{
+	"header": "User Management",
+	"title": "User",
+	"table": {
+		"title": "User List",
+		"filter": {
+			"searchPlaceholder": "Search by User ID or User Name"
+		}
+	},
+	"schema": {
+		"id": {
+			"label": "ID"
+		},
+		"department_id": {
+			"label": "Department ID"
+		},
+		"full_name": {
+			"label": "Name - Surname"
+		},
+		"tel": {
+			"label": "Tel"
+		},
+		"line_name": {
+			"label": "Line Name"
+		},
+		"line_id": {
+			"label": "Line Id"
+		},
+		"image": {
+			"label": "Image"
+		},
+		"status": {
+			"label": "Status"
+		}
+	}
+}

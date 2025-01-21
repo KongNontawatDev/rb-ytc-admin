@@ -1,0 +1,33 @@
+{
+	"header": "จัดการแอดมิน",
+	"title": "แอดมิน",
+	"table": {
+		"title": "รายการแอดมิน",
+		"filter": {
+			"searchPlaceholder": "ค้นหาด้วย รหัส หรือ ชื่อแอดมิน หรือ อีเมล"
+		}
+	},
+	"schema": {
+		"id": {
+			"label": "รหัส"
+		},
+		"role_id": {
+			"label": "รหัสสิทธิ์"
+		},
+		"name": {
+			"label": "ชื่อผู้ใช้"
+		},
+		"email": {
+			"label": "อีเมล"
+		},
+		"password": {
+			"label": "รหัสผ่าน"
+		},
+		"image": {
+			"label": "รูปแอดมิน"
+		},
+		"status": {
+			"label": "สถานะ"
+		}
+	}
+}

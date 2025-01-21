@@ -1,0 +1,27 @@
+{
+	"header": "Accessory Management",
+	"title": "Accessory",
+	"table": {
+		"title": "Accessory List",
+		"filter": {
+			"searchPlaceholder": "Search by Accessory ID or Accessory Name"
+		}
+	},
+	"schema": {
+		"id": {
+			"label": "ID"
+		},
+		"name": {
+			"label": "Accessory Name"
+		},
+		"detail": {
+			"label": "Detail"
+		},
+		"image": {
+			"label": "Image"
+		},
+		"status": {
+			"label": "Status"
+		}
+	}
+}

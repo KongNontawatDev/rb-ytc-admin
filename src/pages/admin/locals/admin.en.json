@@ -1,0 +1,33 @@
+{
+	"header": "Admin Management",
+	"title": "Admin",
+	"table": {
+		"title": "Admin List",
+		"filter": {
+			"searchPlaceholder": "Search by Admin ID or Admin Name"
+		}
+	},
+	"schema": {
+		"id": {
+			"label": "ID"
+		},
+		"role_id": {
+			"label": "Role ID"
+		},
+		"name": {
+			"label": "User Name"
+		},
+		"email": {
+			"label": "Email"
+		},
+		"password": {
+			"label": "Password"
+		},
+		"image": {
+			"label": "Profile Image"
+		},
+		"status": {
+			"label": "Status"
+		}
+	}
+}

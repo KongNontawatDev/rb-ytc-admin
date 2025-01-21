@@ -1,0 +1,26 @@
+{
+	"header": "จัดการแดชบอร์ด",
+	"title": "แดชบอร์ด",
+	"table": {
+		"title": "รายการแดชบอร์ด"
+	},
+	"schema": {
+		"booking_list_count": {
+			"label": "จำนวนรายการจองทั้งหมด",
+			"display":"{{data}} รายการ"
+		},
+		"room_count": {
+			"label": "จำนวนห้องประชุม",
+			"display":"{{data}} ห้อง"
+		},
+		"user_count": {
+			"label": "จำนวนผู้ใช้",
+			"display":"{{data}} คน"
+		},
+		"accessory_count": {
+			"label": "จำนวนอุปกรณ์",
+			"display":"{{data}} ตัว"
+		}
+	},
+	"chart1":"จำนวนรายการจองแต่ละเดือน"
+}

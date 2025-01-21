@@ -1,0 +1,26 @@
+{
+	"status": {
+		"published": "Published",
+		"unpublished": "Unpublished",
+		"draft": "Draft"
+	},
+	"active": {
+		"enabled": "Enabled",
+		"disabled": "Disabled"
+	},
+	"gender": {
+		"male": "Male",
+		"female": "Female",
+		"unspecified": "Unspecified"
+	},
+	"userStatus": {
+		"active": "Active",
+		"inactive": "Inactive",
+		"blocked": "Blocked"
+	},
+	"bookingListStatus": {
+		"active": "In Progress",
+		"success": "Completed",
+		"cancel": "Cancelled"
+	}
+}

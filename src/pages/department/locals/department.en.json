@@ -1,0 +1,22 @@
+{
+	"header": "Department Management",
+	"title": "Department",
+	"table": {
+		"title": "Department List",
+		"filter": {
+			"searchPlaceholder": "Search by Department ID or Department Name"
+		}
+	},
+	"schema": {
+		"id": {
+			"label": "ID"
+		},
+		"name": {
+			"label": "Department Name"
+		},
+		"status": {
+			"label": "Status"
+		}
+
+	}
+}

@@ -1,0 +1,42 @@
+{
+	"header": "Room Management",
+	"title": "Room",
+	"table": {
+		"title": "Room List",
+		"filter": {
+			"searchPlaceholder": "Search by Room ID or Room Name"
+		}
+	},
+	"schema": {
+		"id": {
+			"label": "ID"
+		},
+		"name": {
+			"label": "Room Name"
+		},
+		"detail": {
+			"label": "Detail"
+		},
+		"location": {
+			"label": "Location"
+		},
+		"size": {
+			"label": "Size"
+		},
+		"capacity": {
+			"label": "Capacity"
+		},
+		"image": {
+			"label": "Image"
+		},
+		"status": {
+			"label": "Status"
+		},
+		"accessory": {
+			"label": "Appliances in the room"
+		},
+				"roomStatus": {
+			"label": "Room Status"
+		}
+	}
+}

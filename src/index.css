@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html ,body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+.ck.ck-content {
+  min-height: 300px !important;
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
+}
+.dark .ck-content {
+  background-color: #141414 !important;
+  color: #fff !important;
+}
+.ck.ck-editor__top,
+.ck.ck-sticky-panel,
+.ck.ck-toolbar,
+.ck.ck-sticky-panel__content {
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
+}
+
+.ant-modal-content,
+.ant-modal-confirm-btns .ant-btn span {
+  font-family: 'Kanit';
+}

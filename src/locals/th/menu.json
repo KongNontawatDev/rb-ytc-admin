@@ -1,0 +1,21 @@
+{
+	"menu": "เมนู",
+	"home": "หน้าแรก",
+	"dashboard": "แดชบอร์ด",
+	"product": "สินค้า",
+	"categories": "หมวดหมู่",
+	"orders": "คำสั่งซื้อ",
+	"department": "แผนกฝ่ายงาน",
+	"accessory": "อุปกรณ์",
+	"user": "ผู้ใช้",
+	"admin": "แอดมิน",
+	"room": "ห้องประชุม",
+	"booking_list": "รายการจองห้อง",
+	"customers": "ลูกค้า",
+	"reports": "รายงาน",
+	"setting": {
+		"_": "ตั้งค่า",
+		"profile": "โปรไฟล์",
+		"test": "ทดสอบ"
+	}
+}

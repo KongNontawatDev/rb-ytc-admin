@@ -1,0 +1,26 @@
+{
+	"header": "Dashboard Management",
+	"title": "Dashboard",
+	"table": {
+		"title": "Dashboard List"
+	},
+	"schema": {
+		"booking_list_count": {
+			"label": "Total Booking Entries",
+			"display": "{{data}} entries"
+		},
+		"room_count": {
+			"label": "Number of Meeting Rooms",
+			"display": "{{data}} rooms"
+		},
+		"user_count": {
+			"label": "Number of Users",
+			"display": "{{data}} users"
+		},
+		"accessory_count": {
+			"label": "Number of Accessories",
+			"display": "{{data}} items"
+		}
+	},
+		"chart1":"Number of bookings per month"
+}

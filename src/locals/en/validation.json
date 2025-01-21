@@ -1,0 +1,17 @@
+{
+	"required": "Please enter {{field}}",
+	"placeholder": "Enter {{field}}",
+	"placeholderSelect": "Select {{field}}",
+	"requiredSelect": "Please Select {{field}}",
+	"minLength": "{{field}} must be at least {{min}} characters long",
+	"maxLength": "{{field}} must not exceed {{max}} characters",
+	"min": "{{field}} must be at least {{min}}",
+	"max": "{{field}} must not exceed {{max}}",
+	"invalidFormat": "Invalid format for {{field}}",
+	"password": {
+		"pattern":"Password must contain at least one uppercase letter, one number, and one special character",
+		"requirements":"Password must be 8-20 characters long and contain at least one uppercase letter, one number, and one special character",
+		"mismatch":"New password and Confirm new password do not match. Please try again."
+	},
+	"range":"A {{field}} must be entered in the range {{min}} to {{max}}."
+}

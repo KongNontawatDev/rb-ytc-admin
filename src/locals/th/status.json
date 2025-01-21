@@ -1,0 +1,26 @@
+{
+  "status": {
+    "published": "เผยแพร่",
+    "unpublished": "ปิดเผยแพร่",
+    "draft": "ดราฟ"
+  },
+  "active": {
+    "enabled": "เปิดใช้งาน",
+    "disabled": "ปิดใช้งาน"
+  },
+  "gender": {
+    "male": "ชาย",
+    "female": "หญิง",
+    "unspecified": "ไม่ระบุ"
+  },
+  "userStatus": {
+    "active": "ใช้งานอยู่",
+    "inactive": "ไม่ได้ใช้งานแล้ว",
+    "blocked": "บล็อค"
+  },
+  "bookingListStatus": {
+    "active": "กำลังดำเนินการ",
+    "success": "ดำเนินการแล้ว",
+    "cancel": "ยกเลิก"
+  }
+}

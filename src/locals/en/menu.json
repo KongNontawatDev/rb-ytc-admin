@@ -1,0 +1,21 @@
+{
+	"menu": "Menu",
+	"home": "Home",
+	"dashboard": "Dashboard",
+	"product": "Product",
+	"categories": "Categories",
+	"orders": "Orders",
+	"department": "Department",
+	"accessory": "Accessory",
+	"user": "User",
+	"admin": "Admin",
+	"room": "room",
+	"booking_list": "Booking List",
+	"customers": "Customers",
+	"reports": "Reports",
+	"setting": {
+		"_": "Settings",
+		"profile": "Profile",
+		"test": "Test"
+	}
+}
