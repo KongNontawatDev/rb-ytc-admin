@@ -3,7 +3,7 @@ import { encryptStorage } from './encryptStorage';
 import { useLocaleStore } from '../hooks/localeStore';
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: import.meta.env.VITE_API_URL+"/api",
   timeout: 10000,
 });
 

@@ -56,6 +56,6 @@ export const useUserForDropdown = () => {
 };
 
 export const getImage = (filename: string, folder: string) => {
-  return `http://localhost:3000/${folder}/${filename}`;
+  return `${import.meta.env.VITE_API_URL}/${folder}/${filename}`;
 };
 
