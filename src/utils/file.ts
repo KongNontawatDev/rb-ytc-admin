@@ -1,35 +1,5 @@
 import axios from "axios"
-import supabase from "../libs/supabase";
-import { RcFile } from "antd/es/upload";
-import { v4 } from 'uuid'
 
-export const imageOperations = {
-	uploadOne: async (bucket:string,file: RcFile) => {
-		const formData = new FormData();
-		const newFileName = `${v4()}_${file.name}`;
-		formData.append("file", file, newFileName);
-		
-		const { data, error } = await supabase.storage
-			.from(bucket)
-			.upload(newFileName, formData);
-      console.log('upload image One',data);
-      
-			
-		if (error) throw error;
-		return data.path;
-	},
-
-	deleteOne: async (bucket:string,imagePath: string) => {
-		if (!imagePath) return;
-		
-		const {data, error } = await supabase.storage
-			.from(bucket)
-			.remove([imagePath]);
-			
-		if (error) throw error;
-      console.log('upload image One',data);
-	}
-};
 
 export const ckEditorUploadImage = (loader: { file: Promise<File> }, fieldName: string, path: string) => {
   return new Promise((resolve, reject) => {
