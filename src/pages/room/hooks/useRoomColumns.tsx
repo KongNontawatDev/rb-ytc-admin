@@ -62,7 +62,7 @@ export const useColumns = ({
 						{record.room_image && (
 							<Image
 								src={getImage(record.room_image[0]?.image, "room")}
-								className="rounded-sm max-h-16 max-w-16"
+								className="rounded-sm max-h-20 max-w-20"
 								fallback={fallbackImage}
 							/>
 						)}
