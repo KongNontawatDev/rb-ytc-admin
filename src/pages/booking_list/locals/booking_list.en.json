@@ -4,7 +4,9 @@
 	"table": {
 		"title": "BookingList List",
 		"filter": {
-			"searchPlaceholder": "Search by BookingList ID or BookingList Name"
+			"searchPlaceholder": "Search by BookingList ID or BookingList Name",
+			"startDate":"From date",
+"endDate":"To date"
 		}
 	},
 	"schema": {

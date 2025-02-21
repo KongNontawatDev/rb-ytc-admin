@@ -10,7 +10,7 @@ import {
 } from "antd";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
-import { getImage, useRoomById } from "../hooks/useRoomQuery";
+import { useRoomById } from "../hooks/useRoomQuery";
 import EmptyData from "../../../components/common/EmptyData";
 import { Room } from "../types";
 import { UnorderedListOutlined } from "@ant-design/icons";
@@ -18,6 +18,7 @@ import { fallbackImage } from "../../../utils/file";
 import ButtonCancel from "../../../components/common/ButtonCancel";
 import { toDateTime } from "../../../utils/dateFunction";
 import BadgeActive from "../../../components/common/BadgeActive";
+import { getImage } from "../../../hooks/getImage";
 
 interface RoomViewModalProps {
 	id?: number | null;

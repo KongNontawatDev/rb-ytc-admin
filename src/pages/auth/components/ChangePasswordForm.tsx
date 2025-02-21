@@ -74,7 +74,7 @@ export default function ChangePasswordForm({
 			}),
 		},
 		{
-			pattern: /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#_$%^&*])(?=.{8,})/,
+			pattern: /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#_$%^&.*])(?=.{8,})/,
 			message: t("validation:password.pattern"),
 		},
 	];
@@ -83,7 +83,7 @@ export default function ChangePasswordForm({
 		<>
 			{errorSubmit && (
 				<AlertSubmitFail
-					message={t("common:createData.error")}
+					message={"เปลี่ยนรหัสผ่านไม่สำเร็จ"}
 					description={errorSubmit}
 				/>
 			)}

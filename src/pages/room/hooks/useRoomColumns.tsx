@@ -9,9 +9,9 @@ import { CustomColumnType } from "../../../types/TableType";
 import ButtonViewDetail from "../../../components/common/ButtonVeiwDetail";
 import ButtonEdit from "../../../components/common/ButtonEdit";
 import ButtonDelete from "../../../components/common/ButtonDelete";
-import { getImage } from "./useRoomQuery";
 import { fallbackImage } from "../../../utils/file";
 import { Room } from "../types";
+import { getImage } from "../../../hooks/getImage";
 
 interface UseRoomColumnsProps {
 	textSearch?: string;

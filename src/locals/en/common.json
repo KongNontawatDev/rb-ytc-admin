@@ -112,5 +112,14 @@
 		"message": "You have unsaved changes",
 		"leave": "Leave without saving",
 		"stay": "Cancel"
-	}
+	},
+	"dateRange": {
+      "select": "Select Date Range",
+      "all": "All",
+      "1day": "1 Day",
+      "7days": "7 Day",
+      "1month": "1 Month",
+      "3months": "3 Month",
+      "1year": "1 Year"
+    }
 }

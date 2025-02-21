@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button, Flex, Form, Input, Spin, Typography } from "antd";
 import { useTranslation } from "react-i18next";
-import { getImage, useAdminById } from "../hooks/useAdminQuery";
+import {useAdminById } from "../hooks/useAdminQuery";
 import { Admin } from "../types";
 import { useCreateAdmin, useUpdateAdmin } from "../hooks/useAdminMutate";
 import { FormMode } from "../../../types/formType";
@@ -23,6 +23,7 @@ import RoleDropdown from "../../role/components/RoleDropdown";
 import useAuthStore from "../../auth/hooks/useAuthStore";
 import { KeyOutlined } from "@ant-design/icons";
 import AdminModalChangePassword from "./AdminModalChangePassword";
+import { getImage } from "../../../hooks/getImage";
 const { Text } = Typography;
 
 interface AdminFormProps {
@@ -374,7 +375,7 @@ export default function AdminForm({
 					</Flex>
 				)}
 
-				<Button block className="mt-4" icon={<KeyOutlined/>} onClick={()=>setIsOpenChangePassword(true)}>{t("auth:changePassword")}</Button>
+				{mode=="edit"&&<Button block className="mt-4" icon={<KeyOutlined/>} onClick={()=>setIsOpenChangePassword(true)}>{t("auth:changePassword")}</Button>}
 
 				<Flex justify="space-between" align="center" gap={5} className="mt-4">
 					{mode == "edit" ? (

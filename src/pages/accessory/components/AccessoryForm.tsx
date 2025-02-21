@@ -22,6 +22,7 @@ import { useActiveList } from "../../../hooks/useActiveList";
 import { useNavigationBlock } from "../../../hooks/useNavigationBlock";
 import { useNavigationBlockEnhanced } from "../../../utils/formUtils";
 import ImageUpload from "../../../components/common/ImageUpload";
+import { getImage } from "../../../hooks/getImage";
 const { Text } = Typography;
 
 interface AccessoryFormProps {
@@ -58,6 +59,7 @@ export default function AccessoryForm({
 			form.resetFields();
 		} else if (data?.data && (mode === "edit" || mode === "view")) {
 			form.setFieldsValue(data?.data);
+			form.setFieldValue("image",getImage(data?.data?.image,"accessory"))
 		}
 	}, [form, mode, data]);
 

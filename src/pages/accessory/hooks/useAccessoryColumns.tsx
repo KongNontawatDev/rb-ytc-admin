@@ -9,8 +9,8 @@ import { CustomColumnType } from "../../../types/TableType";
 import ButtonViewDetail from "../../../components/common/ButtonVeiwDetail";
 import ButtonEdit from "../../../components/common/ButtonEdit";
 import ButtonDelete from "../../../components/common/ButtonDelete";
-import { getImage } from "./useAccessoryQuery";
 import { fallbackImage } from "../../../utils/file";
+import { getImage } from "../../../hooks/getImage";
 
 interface UseAccessoryColumnsProps {
 	textSearch?: string;

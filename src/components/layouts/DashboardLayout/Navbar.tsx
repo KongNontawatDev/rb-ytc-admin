@@ -13,28 +13,35 @@ import {
 	MenuFoldOutlined,
 	MenuUnfoldOutlined,
 	LogoutOutlined,
+	KeyOutlined,
+	ProfileOutlined,
 } from "@ant-design/icons";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useLayoutStore from "./hooks/useLayoutStore";
 import useUISettingStore from "../UISetting/hooks/useUISettingStore";
-import Title from "antd/es/typography/Title";
 import { useLocaleStore } from "../../../hooks/localeStore";
 import { MenuProps } from "antd/lib";
 import useAuthStore from "../../../pages/auth/hooks/useAuthStore";
 import { encryptStorage } from "../../../libs/encryptStorage";
-import { getImage } from "../../../pages/user/hooks/useUserQuery";
 import { fallbackImage } from "../../../utils/file";
 import { Typography } from 'antd';
+import { getImage } from "../../../hooks/getImage";
+import AdminModalChangePassword from "../../../pages/admin/components/AdminModalChangePassword";
+import { useState } from "react";
+import AdminModal from "../../../pages/admin/components/AdminModal";
+import { useTranslation } from "react-i18next";
 
 const { Header } = Layout;
 const { useBreakpoint } = Grid;
 
 export default function Navbar() {
+	const {t} = useTranslation(["app","menu"])
 	const uiSettingStore = useUISettingStore();
 	const authStore = useAuthStore();
 	const languageStore = useLocaleStore();
 	const navigate = useNavigate();
-	// const [openModalAdmin, setOpenModalAdmin] = useState(false)
+	const [isOpenChangePassword, setIsOpenChangePassword] = useState(false);
+	const [isOpenProfile, setIsOpenProfile] = useState(false);
 	const screens = useBreakpoint();
 	const isMobile = screens.sm;
 	const {
@@ -51,20 +58,42 @@ export default function Navbar() {
 	};
 
 	const profile_menu: MenuProps["items"] = [
+				{
+			key: "2",
+			icon: <ProfileOutlined />,
+			label: t("menu:profile"),
+			onClick:()=>setIsOpenProfile(true)
+		},
+		{
+			key: "3",
+			icon: <KeyOutlined />,
+			label: t("menu:changePassword"),
+			onClick:()=>setIsOpenChangePassword(true)
+		},
 		{
 			key: "4",
 			danger: true,
 			icon: <LogoutOutlined />,
-			label: (
-				<Link to={"#"} onClick={logout}>
-					ออกจากระบบ
-				</Link>
-			),
+			label: t("menu:logout"),
+			onClick:()=>logout()
 		},
 	];
 
 	return (
 		<>
+		<AdminModalChangePassword
+				id={authStore?.admin?.id}
+				onClose={()=>setIsOpenChangePassword(false)}
+				open={isOpenChangePassword}
+			/>
+			 <AdminModal
+        open={isOpenProfile}
+        onClose={() => {
+          setIsOpenProfile(false);
+        }}
+        id={authStore?.admin?.id}
+        initialMode={"view"}
+      />
 			<Header
 				style={{
 					padding: 0,
@@ -78,18 +107,18 @@ export default function Navbar() {
 			>
 				<Space>
 					{uiSettingStore.layout == "horizontal" ? (
-						<Space style={{ paddingLeft: "1rem" }}>
+						<Flex justify="center" align="center" gap={5} style={{ paddingLeft: "1rem" }} >
 							<Image
 								src="/assets/logo.png"
 								alt="logo"
-								width={50}
+								width={30}
 								preview={false}
 								style={{ marginRight: "16px" }}
 							/>
-							<Title level={4} style={{ margin: 0 }}>
-								ทดสอบระบบ
-							</Title>
-						</Space>
+							<h3 style={{ margin: 0 }} className="text-base lg:text-lg font-medium">
+							{t("app:appName")}
+							</h3>
+						</Flex>
 					) : (
 						<Button
 							type="text"

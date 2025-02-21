@@ -36,6 +36,8 @@ export const useBookingListPage = (defaultFilter: FilterQuery) => {
     localFilter.sortField,
     localFilter.sortOrder,
     localFilter.status,
+    localFilter.book_start,
+    localFilter.book_end,
     debouncedSearchTerm,
   ]);
 

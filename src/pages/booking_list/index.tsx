@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import {  UnorderedListOutlined } from "@ant-design/icons";
+import { UnorderedListOutlined } from "@ant-design/icons";
 import { Card, Tabs } from "antd";
 import { useColumnOrderStore } from "../../hooks/useTableStore";
-import { FilterQuery } from "./types";
+import {  FilterQuery } from "./types";
 import { useBookingListPage } from "./hooks/useBookingListPage";
 import { useDeleteConfirmation } from "../../hooks/useDeleteConfirmation";
 import { getColumnKey } from "../../types/TableType";
@@ -19,12 +19,14 @@ import { useBookingStatusList } from "../../hooks/useBookingStatusList";
 import BookingListViewModal from "./components/BookingListViewModal";
 
 export default function BookingListPage() {
-	const { t } = useTranslation(["booking_list", "common","app"]);
+	const { t } = useTranslation(["booking_list", "common", "app"]);
 	const { visibleColumns: storedVisibleColumns, updateVisibleColumns } =
 		useColumnOrderStore();
 	const [selectedRows, setSelectedRows] = useState<React.Key[]>([]);
 	const statusList = useBookingStatusList(null);
-		const [openView, setViewOpen] = useState(false);
+	const [openView, setViewOpen] = useState(false);
+	const [userHasSetView, setUserHasSetView] = useState(false);
+	
 	const defaultFilter: FilterQuery = {
 		textSearch: "",
 		searchField: "id,user_name",
@@ -33,6 +35,8 @@ export default function BookingListPage() {
 		sortOrder: "desc",
 		sortField: "id",
 		status: "",
+		book_start:"",
+		book_end:"",
 	};
 
 	const {
@@ -55,6 +59,37 @@ export default function BookingListPage() {
 		deleteSelectedBookingList,
 		statusUpdateLoading,
 	} = useBookingListPage(defaultFilter);
+
+	// เซ็ตค่าเริ่มต้นตามขนาดหน้าจอเมื่อโหลดหน้าครั้งแรกเท่านั้น
+	useEffect(() => {
+		if (!userHasSetView) {
+			const isLargeScreen = window.innerWidth >= 992; // lg breakpoint ของ Ant Design
+			setView(isLargeScreen ? "table" : "card");
+			
+			// ติดตั้ง event listener เฉพาะเมื่อยังไม่ได้กำหนดมุมมองโดยผู้ใช้
+			const handleResize = () => {
+				if (!userHasSetView) {
+					const isLargeScreen = window.innerWidth >= 992;
+					setView(isLargeScreen ? "table" : "card");
+				}
+			};
+			
+			window.addEventListener("resize", handleResize);
+			
+			return () => {
+				window.removeEventListener("resize", handleResize);
+			};
+		}
+	}, [userHasSetView, setView]);
+
+	// ฟังก์ชันที่จะถูกเรียกเมื่อผู้ใช้คลิกปุ่มสลับมุมมอง
+	const handleToggleView = () => {
+		setUserHasSetView(true);
+		setView((prev) => (prev === "card" ? "table" : "card"));
+		
+		// ลบ event listener เมื่อผู้ใช้เลือกมุมมองเอง
+		window.removeEventListener("resize", () => {});
+	};
 
 	const confirmDelete = useDeleteConfirmation(
 		t("booking_list:title"),
@@ -103,9 +138,10 @@ export default function BookingListPage() {
 		}
 	}, [columns, storedVisibleColumns, updateVisibleColumns]);
 
-		useEffect(() => {
+	useEffect(() => {
 		document.title = t("booking_list:header") + t("app:appTitle");
-	}, []);
+	}, [t]);
+
 
 	return (
 		<>
@@ -118,7 +154,7 @@ export default function BookingListPage() {
 				id={selectedId}
 				initialMode={formMode}
 			/>
-					<BookingListViewModal
+			<BookingListViewModal
 				open={openView}
 				onClose={() => {
 					setViewOpen(false);
@@ -136,9 +172,7 @@ export default function BookingListPage() {
 				onToggleSearch={() => setSearchState(!searchState)}
 				searchState={searchState}
 				view={view}
-				onToggleView={() =>
-					setView((prev) => (prev === "card" ? "table" : "card"))
-				}
+				onToggleView={handleToggleView}
 				columns={columns}
 				visibleColumns={storedVisibleColumns["booking_list-table"]}
 				onColumnVisibilityChange={(
@@ -164,11 +198,16 @@ export default function BookingListPage() {
 			<Card className="mt-3" bordered={false}>
 				<Tabs
 					defaultActiveKey="1"
-					items={statusList.map((status) => ({
+					items={statusList.map((status,index) => ({
 						key: String(status.value),
-						label: status.label,
+						label: (
+							<span>
+								{status.label}{' '}({data?.meta?.statusCounts["status_"+(index+1)]})
+								
+							</span>
+						),
 					}))}
-         onChange={(key:string)=>handleFilterChange({status:key})} 
+					onChange={(key:string)=>handleFilterChange({status:key})} 
 				/>
 				{searchState && (
 					<BookingListFilterSection

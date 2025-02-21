@@ -1,9 +1,10 @@
 import React, { useMemo } from "react";
 import { Image, Spin } from "antd";
-import { getImage, useAccessoryForDropdown } from "../hooks/useAccessoryQuery";
+import { useAccessoryForDropdown } from "../hooks/useAccessoryQuery";
 import Select from "../../../components/common/Select";
 import { useTranslation } from "react-i18next";
 import { fallbackImage } from "../../../utils/file";
+import { getImage } from "../../../hooks/getImage";
 
 type AccessoryDropdownProps = {
 	placeholder?: string;

@@ -10,6 +10,8 @@ type Props = {
 	type?: ButtonType;
 	size?: ButtonSize;
 	onClick?: React.MouseEventHandler<HTMLElement>;
+	className?:string
+	block?:boolean
 };
 
 export default function ButtonBack({
@@ -19,6 +21,8 @@ export default function ButtonBack({
 	type = "text",
 	size = "middle",
 	onClick,
+	className,
+	block
 }: Props) {
 	const navigate = useNavigate();
 
@@ -35,6 +39,8 @@ export default function ButtonBack({
 				icon={<ArrowLeftOutlined />}
 				size={size}
 				onClick={onClick || handleClick}
+				className={className}
+				block={block}
 			>
 				{title}
 			</Button>
@@ -48,6 +54,8 @@ export default function ButtonBack({
 				icon={<ArrowLeftOutlined />}
 				size={size}
 				onClick={onClick || handleClick}
+				className={className}
+				block={block}
 			>
 			</Button>
 		</Tooltip>

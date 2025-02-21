@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Flex, Form, Input, InputNumber, Spin, Typography } from "antd";
 import { useTranslation } from "react-i18next";
-import { getImage, useRoomById } from "../hooks/useRoomQuery";
+import { useRoomById } from "../hooks/useRoomQuery";
 import { Room } from "../types";
 import { useCreateRoom, useUpdateRoom } from "../hooks/useRoomMutate";
 import { FormMode } from "../../../types/formType";
@@ -22,6 +22,7 @@ import ImageUpload from "../../../components/common/ImageUpload";
 import { UploadFile } from "antd/lib";
 import type { UploadRequestOption } from "rc-upload/lib/interface";
 import AccessoryDropdown from "../../accessory/components/AccessoryDropdown";
+import { getImage } from "../../../hooks/getImage";
 
 const { Text } = Typography;
 

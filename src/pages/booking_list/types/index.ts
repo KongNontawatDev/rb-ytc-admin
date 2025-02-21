@@ -31,6 +31,8 @@ export interface FilterQuery {
   sortOrder?: 'asc' | 'desc';
   sortField?: string;
   status?: string;
+  book_start?: string;
+  book_end?: string;
 }
 
 export const initialBookingListData: Partial<BookingList> = {

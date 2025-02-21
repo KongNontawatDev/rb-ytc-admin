@@ -4,7 +4,7 @@ import api from "../../../libs/api";
 import { AxiosError } from "axios";
 import { ErrorResponse } from "../../../types/axiosType";
 import { useNavigate } from "react-router-dom";
-import { FormLoginType, FormResetPasswordType, FormConfirmPasswordType, FormLoginResponse } from "../types";
+import { FormLoginType,  FormConfirmPasswordType, FormLoginResponse } from "../types";
 import useAuthStore from "./useAuthStore";
 
 // Login Mutation
@@ -29,6 +29,49 @@ export const useLogin = (onSuccessCallback: (data: FormLoginResponse) => void) =
   });
 };
 
+export const useLoginWithEmail = (onSuccessCallback: (data: FormLoginResponse) => void) => {
+  const { showSuccessNotification, showErrorNotification } = useNotification();
+
+  return useMutation({
+    mutationFn: async (email: string) => {
+      const { data } = await api.post("/admin/auth/login-with-email", {email});
+      return data;
+    },
+    onSuccess: (data) => {
+      showSuccessNotification("Send Email successful!");
+      onSuccessCallback(data);
+    },
+    onError: (error: AxiosError<ErrorResponse>) => {
+      showErrorNotification(
+        "Send Email  failed",
+        error.response?.data.message || error.message
+      );
+    },
+  });
+};
+
+export const useForgetPassword = (onSuccessCallback: (data: FormLoginResponse) => void) => {
+  const { showSuccessNotification, showErrorNotification } = useNotification();
+
+  return useMutation({
+    mutationFn: async (email: string) => {
+      const { data } = await api.post("/admin/auth/forgot-password", {email});
+      return data;
+    },
+    onSuccess: (data) => {
+      showSuccessNotification("Send Email successful!");
+      onSuccessCallback(data);
+    },
+    onError: (error: AxiosError<ErrorResponse>) => {
+      showErrorNotification(
+        "Send Email  failed",
+        error.response?.data.message || error.message
+      );
+    },
+  });
+};
+
+
 // Refresh Token Mutation
 export const useRefreshToken = () => {
   return useMutation({
@@ -48,8 +91,8 @@ export const useResetPassword = (onSuccessCallback: () => void) => {
   const { showSuccessNotification, showErrorNotification } = useNotification();
 
   return useMutation({
-    mutationFn: async (formData: FormResetPasswordType): Promise<FormLoginResponse> => {
-      const { data } = await api.post("/resetpassword", formData);
+    mutationFn: async (formData:{newPassword:string,token:string}): Promise<FormLoginResponse> => {
+      const { data } = await api.post("/admin/auth/reset-password", formData);
       return data.results;
     },
     onSuccess: () => {
@@ -109,6 +152,8 @@ export const useChangePassword = (onSuccessCallback: () => void) => {
   });
 };
 
+
+
 // Logout Mutation
 export const useLogout = () => {
   const queryClient = useQueryClient();
@@ -137,6 +182,27 @@ export const useLogout = () => {
     onError: (error: AxiosError<ErrorResponse>) => {
       showErrorNotification(
         "Logout failed",
+        error.response?.data.message || error.message
+      );
+    },
+  });
+};
+
+export const useValidateTokenWithEmail = (onSuccessCallback: (data: FormLoginResponse) => void) => {
+  const { showSuccessNotification, showErrorNotification } = useNotification();
+
+  return useMutation({
+    mutationFn: async (token: string) => {
+      const { data } = await api.post("/admin/auth/validate-login-with-email?token="+token);
+      return data;
+    },
+    onSuccess: (data) => {
+      showSuccessNotification("Login successful!");
+      onSuccessCallback(data);
+    },
+    onError: (error: AxiosError<ErrorResponse>) => {
+      showErrorNotification(
+        "Login failed",
         error.response?.data.message || error.message
       );
     },

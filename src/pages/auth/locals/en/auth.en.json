@@ -4,11 +4,13 @@
 	"loginSuccess": "Login successful.",
 	"loginError": "Login failed",
 	"loginWarning": "Username or password is incorrect! Please try again.",
+	"loginWithEmail": "Login with Email",
 	"rememberMe": "Remember me",
 	"forgetPassword": "Forgot password?",
 	"schema": {
 		"email": {
-			"label": "Email"
+			"label": "Email",
+			"detail":"Enter your email to request a new password."
 		},
 		"password": {
 			"label": "Password",
@@ -19,7 +21,22 @@
 	"changePasswordRole": "You must enter the password and confirm the password exactly the same.",
 	"changePasswordSuccess": "Change Password Success",
 	"changePasswordFail": "Change Password Failed",
+	"changePasswordFailDetail": "Something might have gone wrong. Please try again.",
 	"currentPassword":"Current Password",
 	"newPassword":"New Password",
-	"confirmNewPassword":"Confirm New Password"
+	"confirmNewPassword":"Confirm New Password",
+	"openEmailInbox":"Open Email Inbox",
+	"emailSend":"✅ Email sent to ",
+	"emailSendDetail":"Please check your mailbox and click the {{data}} link.",
+	"requestChnagePassword":"Request to change password",
+	"backToLogin":"Return to the login page",
+	"backToLoginPassword":"Login with password",
+	"confirmEmail":"Confirm Email",
+	"forgotPassword":{
+		"error":{
+			"message":"Identity verification failed",
+			"description":"This email is invalid or may not be registered in the system."
+		}
+	},
+	"noTokenProvided":"noTokenProvided"
 }

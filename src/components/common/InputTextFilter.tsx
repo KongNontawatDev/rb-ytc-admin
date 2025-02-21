@@ -29,7 +29,7 @@ export default function InputTextFilter({
   
 	return (
 		<Form layout="vertical" >
-			<Form.Item label={label}>
+			<Form.Item label={label} className={className}>
 				<Search
 					value={value}
 					placeholder={placeholder}
@@ -37,7 +37,7 @@ export default function InputTextFilter({
 					onSearch={onSearch}
 					onChange={onChange}
 					onPressEnter={onPressEnter}
-					className={className}
+					
 					loading={loading}
 				/>
 			</Form.Item>

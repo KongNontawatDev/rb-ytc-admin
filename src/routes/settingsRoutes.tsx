@@ -1,5 +1,6 @@
-import { lazy, Suspense } from 'react';
+import { lazy } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
+import { PageWrapper } from './PageWrapper';
 import SettingLayoutLoading from '../components/layouts/SettingsLayout/loading';
 
 // Lazy load components
@@ -7,14 +8,20 @@ const SettingsLayout = lazy(() => import('../components/layouts/SettingsLayout')
 const Profile = lazy(() => import('../pages/setting/profile'));
 const Test = lazy(() => import('../pages/setting/test'));
 
-// Create a wrapper for Settings Layout that includes Suspense
+// You can import page-specific loading components here
+// const ProfileLoading = lazy(() => import('../pages/setting/profile/loading'));
+// const TestLoading = lazy(() => import('../pages/setting/test/loading'));
+
 const SettingsLayoutWrapper = () => {
   return (
-    <Suspense fallback={<SettingLayoutLoading />}>
-      <SettingsLayout>
-        <Outlet />
-      </SettingsLayout>
-    </Suspense>
+    <PageWrapper
+      component={() => (
+        <SettingsLayout>
+          <Outlet />
+        </SettingsLayout>
+      )}
+      LoadingComponent={SettingLayoutLoading}
+    />
   );
 };
 
@@ -28,11 +35,18 @@ const settingsRoutes = {
     },
     {
       path: 'profile',
-      element: <Profile />,
+      element: <PageWrapper 
+        component={Profile}
+        // Use custom loading component if available
+        // LoadingComponent={ProfileLoading}
+      />,
     },
     {
       path: 'test',
-      element: <Test />,
+      element: <PageWrapper 
+        component={Test}
+        // LoadingComponent={TestLoading}
+      />,
     },
   ],
 };

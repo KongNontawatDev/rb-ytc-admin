@@ -55,7 +55,3 @@ export const useAdminForDropdown = () => {
 	});
 };
 
-export const getImage = (filename: string, folder: string) => {
-  return `${import.meta.env.VITE_API_URL}/${folder}/${filename}`;
-};
-

@@ -9,9 +9,9 @@ import { CustomColumnType } from "../../../types/TableType";
 import ButtonViewDetail from "../../../components/common/ButtonVeiwDetail";
 import ButtonEdit from "../../../components/common/ButtonEdit";
 import ButtonDelete from "../../../components/common/ButtonDelete";
-import { getImage } from "./useUserQuery";
 import { fallbackImage } from "../../../utils/file";
 import { User } from "../types";
+import { getImage } from "../../../hooks/getImage";
 
 interface UseUserColumnsProps {
 	textSearch?: string;

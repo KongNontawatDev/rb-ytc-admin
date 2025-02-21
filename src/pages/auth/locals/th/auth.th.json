@@ -1,25 +1,42 @@
 {
 	"title": "เข้าสู่ระบบ",
-	"mustLogin": "คุณต้องเข้าสู่ระบบก่อน",
+	"mustLogin": "คุณต้องเข้าสู่ระบบก่อน..",
 	"loginSuccess": "เข้าสู่ระบบสำเร็จ",
-	"loginError": "เข้าสู่ระบบไม่สำเร็จ",
-	"loginWarning": "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง! โปรดลองอีกครั้ง",
-	"rememberMe": "จดจำการเข้าสู่ระบบ",
+	"loginError": "เข้าสู่ระบบล้มเหลว",
+	"loginWarning": "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง! กรุณาลองอีกครั้ง",
+		"loginWithEmail": "เข้าสู่ระบบด้วย Email",
+	"rememberMe": "จำฉันไว้",
 	"forgetPassword": "ลืมรหัสผ่าน?",
 	"schema": {
 		"email": {
-			"label": "อีเมล"
+			"label": "อีเมล",
+			"detail":"กรอกอีเมลของคุณเพื่อขอรหัสผ่านใหม่"
 		},
 		"password": {
 			"label": "รหัสผ่าน",
-			"notmatch": "รหัสผ่าน กับยืนยันรหัสผ่านไม่ตรงกัน"
+			"notmatch": "รหัสผ่านและรหัสผ่านยืนยันไม่ตรงกัน"
 		}
 	},
 	"changePassword": "เปลี่ยนรหัสผ่าน",
-	"changePasswordRole": "ต้องกรอกรหัสผ่านและยืนยันรหัสผ่านให้ตรงกัน",
-	"changePasswordSuccess": "เปลี่ยนรหัสผ่าน สำเร็จ",
-	"changePasswordFail": "เปลี่ยนรหัสผ่าน ไม่เสร็จ",
-	"currentPassword": "รหัสผ่านปัจจุบัน",
-	"newPassword": "รหัสผ่านใหม่",
-	"confirmNewPassword": "ยืนยันรหัสผ่านใหม่อีกครั้ง"
+	"changePasswordRole": "คุณต้องกรอกรหัสผ่านและยืนยันรหัสผ่านให้ตรงกัน",
+	"changePasswordSuccess": "เปลี่ยนรหัสผ่านสำเร็จ",
+	"changePasswordFail": "เปลี่ยนรหัสผ่านล้มเหลว",
+	"changePasswordFailDetail": "อาจเกิดข้อผิดพลาดบางอย่าง กรุณาลองอีกครั้ง",
+	"currentPassword":"รหัสผ่านปัจจุบัน",
+	"newPassword":"รหัสผ่านใหม่",
+	"confirmNewPassword":"ยืนยันรหัสผ่านใหม่",
+	"openEmailInbox":"เปิดกล่องจดหมายอีเมล",
+	"emailSend":"✅ ส่งอีเมลไปแล้วที่ ",
+	"emailSendDetail":"กรุณาตรวจสอบกล่องจดหมายของคุณและคลิกที่ลิงก์ {{data}}",
+	"requestChnagePassword":"ขอเปลี่ยนรหัสผ่าน",
+	"backToLogin":"กลับไปยังหน้าล็อกอิน",
+	"backToLoginPassword":"เข้าสู่ระบบด้วยรหัสผ่าน",
+	"confirmEmail":"ยืนยันอีเมล",
+	"forgotPassword":{
+		"error":{
+			"message":"การยืนยันตัวตนล้มเหลว",
+			"description":"อีเมลนี้ไม่ถูกต้องหรืออาจไม่ได้ลงทะเบียนในระบบ"
+		}
+	},
+		"noTokenProvided":"ไม่พบ Token ยืนยันตัวตน"
 }

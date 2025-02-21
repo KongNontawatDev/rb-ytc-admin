@@ -9,10 +9,10 @@ import { CustomColumnType } from "../../../types/TableType";
 import ButtonViewDetail from "../../../components/common/ButtonVeiwDetail";
 import ButtonEdit from "../../../components/common/ButtonEdit";
 import ButtonDelete from "../../../components/common/ButtonDelete";
-import { getImage } from "./useAdminQuery";
 import { fallbackImage } from "../../../utils/file";
 import { Admin } from "../types";
 import useAuthStore from "../../auth/hooks/useAuthStore";
+import { getImage } from "../../../hooks/getImage";
 
 interface UseAdminColumnsProps {
 	textSearch?: string;

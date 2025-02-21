@@ -17,5 +17,8 @@
 		"_": "Settings",
 		"profile": "Profile",
 		"test": "Test"
-	}
+	},
+	"profile":"My Profile",
+	"changePassword":"Change Password",
+	"logout":"Logout"
 }
