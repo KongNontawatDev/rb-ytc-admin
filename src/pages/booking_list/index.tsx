@@ -34,7 +34,7 @@ export default function BookingListPage() {
 		pageSize: 10,
 		sortOrder: "desc",
 		sortField: "id",
-		status: "",
+		status: "1",
 		book_start:"",
 		book_end:"",
 	};
