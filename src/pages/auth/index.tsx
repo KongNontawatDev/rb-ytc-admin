@@ -53,7 +53,8 @@ const useLoginHandler = () => {
 				delete res.data.accessToken;
 				delete res.data.refreshToken;
 				setAdmin(res.data);
-				navigate("/");
+				window.location.href = "/"
+				return
 			}
 		} catch (error) {
 			console.error("Email login failed:", error);
