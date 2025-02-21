@@ -29,7 +29,7 @@ export default function BookingListPage() {
 	
 	const defaultFilter: FilterQuery = {
 		textSearch: "",
-		searchField: "id,user_name",
+		searchField: "id,user_name,title",
 		page: 1,
 		pageSize: 10,
 		sortOrder: "desc",
