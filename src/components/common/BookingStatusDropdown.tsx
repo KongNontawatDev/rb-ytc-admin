@@ -17,7 +17,6 @@ export default function BookingStatusDropdown({
   onChange,
   placeholder = "Select status",
   disabled = false,
-  style,
   className,
   allowClear = true,
 }: ActiveStatusDropdownProps) {
@@ -55,7 +54,6 @@ export default function BookingStatusDropdown({
       onChange={handleChange}
       placeholder={placeholder}
       disabled={disabled}
-      style={style}
       className={className}
       allowClear={allowClear}
     />
