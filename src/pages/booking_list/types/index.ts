@@ -33,6 +33,8 @@ export interface FilterQuery {
   status?: string;
   book_start?: string;
   book_end?: string;
+  room_id?:string
+  department_id?:string
 }
 
 export const initialBookingListData: Partial<BookingList> = {

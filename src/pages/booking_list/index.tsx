@@ -37,6 +37,8 @@ export default function BookingListPage() {
 		status: "1",
 		book_start:"",
 		book_end:"",
+		room_id:"0",
+		department_id:"0"
 	};
 
 	const {
@@ -165,7 +167,7 @@ export default function BookingListPage() {
 			<BookingListPageHeader
 				title={
 					t("booking_list:header") +
-					(data?.meta?.total ? ` (${data?.meta?.total})` : "")
+					(data?.meta?.total ? ` (${data?.meta?.total})` : "0")
 				}
 				icon={UnorderedListOutlined}
 				onClearFilter={() => handleFilterChange(defaultFilter)}
@@ -198,21 +200,22 @@ export default function BookingListPage() {
 			<Card className="mt-3" bordered={false}>
 				<Tabs
 					defaultActiveKey="1"
-					items={statusList.map((status,index) => ({
+					items={[...statusList.map((status,index) => ({
 						key: String(status.value),
 						label: (
 							<span>
 								{status.label}{' '}({data?.meta?.statusCounts["status_"+(index+1)]})
-								
 							</span>
 						),
-					}))}
+					})),{key:"",label:`${t("common:all")} (${data?.meta?.total||0})`}]}
 					onChange={(key:string)=>handleFilterChange({status:key})} 
 				/>
 				{searchState && (
 					<BookingListFilterSection
 						textSearch={localFilter.textSearch}
 						onFilterChange={handleFilterChange}
+						book_start={localFilter.book_start}
+						book_end={localFilter.book_end}
 					/>
 				)}
 

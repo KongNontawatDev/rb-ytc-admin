@@ -1,5 +1,4 @@
 import React from "react";
-import { Row, Col } from "antd";
 import { useTranslation } from "react-i18next";
 import { FilterQuery } from "../types";
 import InputTextFilter from "../../../components/common/InputTextFilter";
@@ -23,30 +22,25 @@ export const RoomFilterSection: React.FC<RoomFilterSectionProps> = ({
 		onFilterChange({ textSearch: e.target.value });
 	};
 
-
 	const handleStatusChange = (values: string) => {
 		onFilterChange({ status: values });
 	};
 
 	return (
-		<Row gutter={[10, 10]}>
-			<Col span={24} md={12} lg={8}>
-				<InputTextFilter
-					value={textSearch}
-					onChange={handleSearchChange}
-					placeholder={t("room:table.filter.searchPlaceholder")}
-					className="search-input"
-				/>
-			</Col>
-			<Col span={24} md={12} lg={6}>
-				<MultiSelectDropdown
-					title={t("room:schema.status.label")}
-					selectedValues={status}
-					setSelectedValues={handleStatusChange}
-					loading={false}
-					options={activeList}
-				/>
-			</Col>
-		</Row>
+		<div className="flex justify-start lg:justify-between flex-wrap lg:flex-nowrap items-center gap-5 w-full mb-5">
+			<InputTextFilter
+				value={textSearch}
+				onChange={handleSearchChange}
+				placeholder={t("room:table.filter.searchPlaceholder")}
+				className="search-input"
+			/>
+			<MultiSelectDropdown
+				title={t("room:schema.status.label")}
+				selectedValues={status}
+				setSelectedValues={handleStatusChange}
+				loading={false}
+				options={activeList}
+			/>
+		</div>
 	);
 };

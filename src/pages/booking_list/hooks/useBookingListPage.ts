@@ -38,6 +38,8 @@ export const useBookingListPage = (defaultFilter: FilterQuery) => {
     localFilter.status,
     localFilter.book_start,
     localFilter.book_end,
+    localFilter.room_id,
+    localFilter.department_id,
     debouncedSearchTerm,
   ]);
 

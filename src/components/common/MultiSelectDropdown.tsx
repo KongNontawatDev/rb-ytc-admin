@@ -5,9 +5,7 @@ import { useDebounce } from "use-debounce";
 import { useTranslation } from "react-i18next";
 
 interface DropdownOption {
-  label: string;
-  value: string | number;
-  color?: string;
+  [key: string]: any;
 }
 
 interface MultiSelectDropdownProps {
@@ -16,6 +14,8 @@ interface MultiSelectDropdownProps {
   setSelectedValues: (values: string) => void;
   options: DropdownOption[];
   loading: boolean;
+  valueKey?: string;
+  labelKey?: string;
 }
 
 const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
@@ -24,38 +24,44 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
   setSelectedValues,
   options,
   loading,
+  valueKey = "value",
+  labelKey = "label",
 }) => {
+  const { t } = useTranslation("common");
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [debouncedSearchTerm] = useDebounce(searchTerm, 700);
   const [open, setOpen] = useState(false);
   const [internalSelected, setInternalSelected] = useState<(string | number)[]>([]);
-  const { t } = useTranslation("common");
 
   useEffect(() => {
-    if (selectedValues) {
+    if (!loading && selectedValues) {
       setInternalSelected(
-        selectedValues.split(",").map((value) => (!isNaN(Number(value)) ? Number(value) : value))
+        selectedValues.split(",").map((val) => (!isNaN(Number(val)) ? Number(val) : val))
       );
     } else {
       setInternalSelected([]);
     }
-  }, [selectedValues]);
+  }, [selectedValues, loading]);
 
   const handleCheckboxChange = (checkedValues: (string | number)[]) => {
     setSelectedValues(checkedValues.join(","));
   };
 
   const handleSelectAll = () => {
-    setSelectedValues(options.map((opt) => opt.value).join(","));
+    if (!loading) {
+      setSelectedValues(options.map((opt) => opt[valueKey]).join(","));
+    }
   };
 
   const handleClearSelection = () => {
-    setSelectedValues("");
-    setSearchTerm("");
+    if (!loading) {
+      setSelectedValues("");
+      setSearchTerm("");
+    }
   };
 
   const handleRemoveItem = (valueToRemove: string | number) => {
-    const newValues = internalSelected.filter((value) => value !== valueToRemove);
+    const newValues = internalSelected.filter((val) => val !== valueToRemove);
     setSelectedValues(newValues.join(","));
   };
 
@@ -63,11 +69,12 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
     setOpen(nextOpen);
   };
 
-  const filteredOptions = options.filter((option) =>
-    option.label.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
-  );
+  const filteredOptions = loading
+    ? []
+    : options.filter((option) => option[labelKey]?.toLowerCase().includes(debouncedSearchTerm.toLowerCase()));
 
   const renderSelectedValues = () => {
+    if (loading) return <Spin size="small" />;
     if (internalSelected.length === 0) return t("select", { data: title });
 
     if (internalSelected.length > 3) {
@@ -82,11 +89,11 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
     return (
       <Flex>
         <span className="me-2">{t("select", { data: title })} :</span>
-        {internalSelected.map((value) => {
-          const option = options.find((opt) => opt.value === value);
+        {internalSelected.map((val) => {
+          const option = options.find((opt) => opt[valueKey] === val);
           return (
-            <Tag key={value} color={option?.color || "default"} closable onClose={() => handleRemoveItem(value)}>
-              {option?.label || "Unknown"}
+            <Tag key={val} color={option?.color || "default"} closable onClose={() => handleRemoveItem(val)}>
+              {option?.[labelKey] || "Unknown"}
             </Tag>
           );
         })}
@@ -100,7 +107,7 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
       onOpenChange={handleOpenChange}
       open={open}
       dropdownRender={() => (
-        <div style={{ padding: 8, width: 200,backgroundColor:"#fff",zIndex:100000 }} className="shadow rounded">
+        <div style={{ padding: 8, width: 200, backgroundColor: "#fff", zIndex: 100000 }} className="shadow rounded">
           <Input
             size="small"
             placeholder={t("search", { data: title })}
@@ -120,8 +127,8 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
               className="flex flex-col mt-2"
             >
               {filteredOptions.map((option) => (
-                <Checkbox key={option.value} value={option.value}>
-                  {option.label}
+                <Checkbox key={option[valueKey]} value={option[valueKey]}>
+                  {option[labelKey]}
                 </Checkbox>
               ))}
             </Checkbox.Group>

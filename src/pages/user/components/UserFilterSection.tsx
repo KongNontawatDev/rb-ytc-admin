@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col } from "antd";
+import {  Flex } from "antd";
 import { useTranslation } from "react-i18next";
 import { FilterQuery } from "../types";
 import InputTextFilter from "../../../components/common/InputTextFilter";
@@ -17,7 +17,7 @@ interface UserFilterSectionProps {
 export const UserFilterSection: React.FC<UserFilterSectionProps> = ({
 	textSearch = "",
 	status = "",
-  department_id = "",
+	department_id = "",
 	onFilterChange,
 }) => {
 	const { t } = useTranslation(["user", "common"]);
@@ -29,11 +29,11 @@ export const UserFilterSection: React.FC<UserFilterSectionProps> = ({
 	const handleDepartmentChange = (
 		value: string | number | (string | number)[] | undefined
 	) => {
-    if(value) {
-      onFilterChange({ department_id: String(value) });
-    }else {
-      onFilterChange({ department_id:"" });
-    }
+		if (value) {
+			onFilterChange({ department_id: String(value) });
+		} else {
+			onFilterChange({ department_id: "" });
+		}
 	};
 
 	const handleStatusChange = (values: string) => {
@@ -41,19 +41,22 @@ export const UserFilterSection: React.FC<UserFilterSectionProps> = ({
 	};
 
 	return (
-		<Row gutter={[10, 10]}>
-			<Col span={24} md={12} lg={8}>
-				<InputTextFilter
-					value={textSearch}
-					onChange={handleSearchChange}
-					placeholder={t("user:table.filter.searchPlaceholder")}
-					className="search-input"
+		<div className="flex justify-start lg:justify-between flex-wrap lg:flex-nowrap items-center gap-5 w-full mb-5">
+			<InputTextFilter
+				value={textSearch}
+				onChange={handleSearchChange}
+				placeholder={t("user:table.filter.searchPlaceholder")}
+				className="search-input"
+			/>
+			<Flex
+				gap={10}
+				className="justify-start lg:justify-end flex-wrap lg:flex-nowrap"
+			>
+				<DepartmentDropdown
+					onChange={handleDepartmentChange}
+					value={department_id!}
+					placeholder="test"
 				/>
-			</Col>
-			<Col span={24} md={12} lg={6}>
-				<DepartmentDropdown onChange={handleDepartmentChange} value={department_id!} placeholder="test"/>
-			</Col>
-			<Col span={24} md={12} lg={6}>
 				<MultiSelectDropdown
 					title={t("user:schema.status.label")}
 					selectedValues={status}
@@ -61,7 +64,7 @@ export const UserFilterSection: React.FC<UserFilterSectionProps> = ({
 					loading={false}
 					options={activeList}
 				/>
-			</Col>
-		</Row>
+			</Flex>
+		</div>
 	);
 };

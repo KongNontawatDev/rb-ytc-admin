@@ -5,8 +5,14 @@
 		"title": "BookingList List",
 		"filter": {
 			"searchPlaceholder": "Search by BookingList ID or BookingList Name",
-			"startDate":"From date",
-"endDate":"To date"
+			"startDate": "From date",
+			"endDate": "To date",
+			"room": {
+				"label": "Select room"
+			},
+			"department": {
+				"label": "Select department "
+			}
 		}
 	},
 	"schema": {

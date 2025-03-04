@@ -1,6 +1,7 @@
 {
 	"search": "Search {{data}}",
 	"list": "List",
+		"all": "All",
 	"data": "Data",
 	"submit": "Submit",
 	"cancel": "Cancel",

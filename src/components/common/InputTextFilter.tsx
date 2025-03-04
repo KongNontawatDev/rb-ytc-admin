@@ -10,7 +10,7 @@ type Props = {
 	onPressEnter?: () => void;
 	label?: string;
 	className?: HTMLProps<HTMLElement>["className"];
-	loading?:boolean
+	loading?: boolean;
 };
 
 const { Search } = Input;
@@ -24,23 +24,40 @@ export default function InputTextFilter({
 	onPressEnter,
 	label,
 	className,
-	loading=false
+	loading = false,
 }: Props) {
-  
 	return (
-		<Form layout="vertical" >
-			<Form.Item label={label} className={className}>
-				<Search
-					value={value}
-					placeholder={placeholder}
-					allowClear={allowClear}
-					onSearch={onSearch}
-					onChange={onChange}
-					onPressEnter={onPressEnter}
-					
-					loading={loading}
-				/>
-			</Form.Item>
-		</Form>
+		<>
+			{label ? (
+				<>
+					<Form layout="vertical">
+						<Form.Item label={label} className={className}>
+							<Search
+								value={value}
+								placeholder={placeholder}
+								allowClear={allowClear}
+								onSearch={onSearch}
+								onChange={onChange}
+								onPressEnter={onPressEnter}
+								loading={loading}
+							/>
+						</Form.Item>
+					</Form>
+				</>
+			) : (
+				<>
+					<Search
+						value={value}
+						placeholder={placeholder}
+						allowClear={allowClear}
+						onSearch={onSearch}
+						onChange={onChange}
+						onPressEnter={onPressEnter}
+						loading={loading}
+						className="w-full lg:min-w-[250px] lg:max-w-[400px]"
+					/>
+				</>
+			)}
+		</>
 	);
 }

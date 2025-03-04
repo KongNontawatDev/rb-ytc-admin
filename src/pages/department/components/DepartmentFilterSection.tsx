@@ -1,51 +1,44 @@
-import React from 'react';
-import { Row, Col } from 'antd';
-import { useTranslation } from 'react-i18next';
-import { FilterQuery } from '../types';
-import InputTextFilter from '../../../components/common/InputTextFilter';
-import MultiSelectDropdown from '../../../components/common/MultiSelectDropdown';
-import { activeList } from '../../../configs/status';
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { FilterQuery } from "../types";
+import InputTextFilter from "../../../components/common/InputTextFilter";
+import MultiSelectDropdown from "../../../components/common/MultiSelectDropdown";
+import { activeList } from "../../../configs/status";
 
 interface DepartmentFilterSectionProps {
-  textSearch?: string;
-  status?: string;
-  onFilterChange: (filter: Partial<FilterQuery>) => void;
+	textSearch?: string;
+	status?: string;
+	onFilterChange: (filter: Partial<FilterQuery>) => void;
 }
 
-export const DepartmentFilterSection: React.FC<DepartmentFilterSectionProps> = ({
-  textSearch = '',
-  status = '',
-  onFilterChange,
-}) => {
-  const { t } = useTranslation(['department', 'common']);
+export const DepartmentFilterSection: React.FC<
+	DepartmentFilterSectionProps
+> = ({ textSearch = "", status = "", onFilterChange }) => {
+	const { t } = useTranslation(["department", "common"]);
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onFilterChange({ textSearch: e.target.value });
-  };
+	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		onFilterChange({ textSearch: e.target.value });
+	};
 
-  const handleStatusChange = (values: string) => {
-    onFilterChange({ status: values});
-  };
+	const handleStatusChange = (values: string) => {
+		onFilterChange({ status: values });
+	};
 
-  return (
-    <Row gutter={[10, 10]}>
-      <Col span={24} md={12} lg={8}>
-        <InputTextFilter
-          value={textSearch}
-          onChange={handleSearchChange}
-          placeholder={t('department:table.filter.searchPlaceholder')}
-          className="search-input"
-        />
-      </Col>
-      <Col span={24} md={12} lg={8}>
-        <MultiSelectDropdown
-          title={t('department:schema.status.label')}
-          selectedValues={status}
-          setSelectedValues={handleStatusChange}
-          loading={false}
-          options={activeList}
-        />
-      </Col>
-    </Row>
-  );
+	return (
+		<div className="flex justify-start lg:justify-between flex-wrap lg:flex-nowrap items-center gap-5 w-full mb-5">
+			<InputTextFilter
+				value={textSearch}
+				onChange={handleSearchChange}
+				placeholder={t("department:table.filter.searchPlaceholder")}
+				className="search-input"
+			/>
+			<MultiSelectDropdown
+				title={t("department:schema.status.label")}
+				selectedValues={status}
+				setSelectedValues={handleStatusChange}
+				loading={false}
+				options={activeList}
+			/>
+		</div>
+	);
 };
